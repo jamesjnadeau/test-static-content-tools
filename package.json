@@ -9,7 +9,7 @@
   "scripts": {
     "build": "npm run build:functions && npm run build:webpack",
     "dev": "npm run dev:webpack & npm run netlify-lambda:dev",
-    "build:functions": "netlify-lambda build functions",
+    "build:functions": "netlify-lambda build functions -c netlify-webpack.config.js",
     "webpack": "webpack --watch --debug --output-pathinfo",
     "build:webpack": "webpack --colors -p --debug --output-pathinfo",
     "netlify-lambda:dev": "netlify-lambda serve functions -c netlify-webpack.config.js",
