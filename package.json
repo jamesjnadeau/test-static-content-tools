@@ -11,7 +11,7 @@
     "dev": "npm run dev:webpack & npm run netlify-lambda:dev",
     "build:functions": "netlify-lambda build functions",
     "webpack": "webpack --watch --debug --output-pathinfo",
-    "build:webpack": "webpack --progress --colors -p --debug --output-pathinfo",
+    "build:webpack": "webpack --colors -p --debug --output-pathinfo",
     "netlify-lambda:dev": "netlify-lambda serve functions -c netlify-webpack.config.js",
     "dev:webpack": "webpack-dev-server  --debug --output-pathinfo --host 0.0.0.0 --public $PROJECT_DOMAIN.glitch.me",
     "lint": "eslint ."
