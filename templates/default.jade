@@ -53,10 +53,12 @@ html(lang='en')
                 ul.dropdown-menu
                   li
                     a(href="#") Dead link
+                    a(href="#" onclick="netlifyIdentity.open();")
       #container.container.animated.fadeInRight
         block content
           div(data-editable data-name="content") !{content}
 
     
+    script(src="https://identity.netlify.com/v1/netlify-identity-widget.js")
     script(src='/frontend.js?v=#{version}')
     block scripts
