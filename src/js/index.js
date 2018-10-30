@@ -1,3 +1,4 @@
+require("bootstrap/dist/js/bootstrap.js");
 var ContentTools = require('ContentTools/build/content-tools.min.js')
 
 window.addEventListener('load', function() {

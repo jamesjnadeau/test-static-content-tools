@@ -53,7 +53,8 @@ html(lang='en')
                 ul.dropdown-menu
                   li
                     a(href="#") Dead link
-                    a(href="#" onclick="netlifyIdentity.open();")
+                  li
+                    a(href="#" onclick="netlifyIdentity.open();") Login To Edit
       #container.container.animated.fadeInRight
         block content
           div(data-editable data-name="content") !{content}
