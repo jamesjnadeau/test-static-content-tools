@@ -14,6 +14,7 @@ module.exports = function(accessToken) {
       url: url,
       headers: headers,
     }).then(function(origContent) {
+      console.log('get content', origContent, arguments)
       $.ajax({
         url: url,
         headers: headers,
