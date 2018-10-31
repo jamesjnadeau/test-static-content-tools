@@ -1,7 +1,7 @@
 require("bootstrap/dist/js/bootstrap.js");
 var ContentTools = require('ContentTools/build/content-tools.min.js')
 
-var handleError = function(err) {
+var handleError = function(xhr, status, error) {
   console.error(err);
 };
 
@@ -21,9 +21,9 @@ var updateContent = function(path, message, content, cb) {
     }).then(function(result) {
       console.log(result);
       cb();
-    }).catch(handleError);
+    }).fail(handleError);
     // console.log(origContent);
-  }).catch(handleError);
+  }).fail(handleError);
 };
 
 window.addEventListener('load', function() {
