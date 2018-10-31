@@ -42,6 +42,7 @@
     "less-loader": "^4.1.0",
     "loader-utils": "^0.2.12",
     "marked": "^0.3.9",
+    "netlify-identity-widget": "^1.4.14",
     "netlify-lambda": "^1.0.2",
     "optimize-css-assets-webpack-plugin": "3.2.0",
     "package": "^1.0.1",
