@@ -8,7 +8,7 @@
   "main": "server.js",
   "scripts": {
     "build": "npm run build:functions && npm run build:webpack",
-    "dev": "npm run dev:webpack & npm run netlify-lambda:dev",
+    "dev": "npm run dev:webpack",
     "build:functions": "netlify-lambda build functions -c netlify-webpack.config.js",
     "webpack": "webpack --watch --debug --output-pathinfo",
     "build:webpack": "webpack --colors -p --debug --output-pathinfo",
