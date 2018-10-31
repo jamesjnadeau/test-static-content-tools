@@ -19,11 +19,11 @@ module.exports = function(accessToken) {
         url: url,
         headers: headers,
         type: 'PUT',
-        data: {
+        data: JSON.stringify({
           message: message,
           content: content,
           sha: origContent.sha,
-        }
+        }),
       }).then(function(result) {
         console.log(result);
         cb();
