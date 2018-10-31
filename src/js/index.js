@@ -2,7 +2,7 @@ require("bootstrap/dist/js/bootstrap.js");
 var ContentTools = require('ContentTools/build/content-tools.min.js')
 
 var handleError = function(xhr, status, error) {
-  console.error(err);
+  console.error(status, error);
 };
 
 var updateContent = function(path, message, content, cb) {
