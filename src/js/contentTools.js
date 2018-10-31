@@ -22,7 +22,7 @@ module.exports = function(accessToken) {
         data: {
           message: message,
           content: content,
-          sha: origContent.data.sha,
+          sha: origContent.sha,
         }
       }).then(function(result) {
         console.log(result);
