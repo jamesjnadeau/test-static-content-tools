@@ -21,7 +21,7 @@ module.exports = function(accessToken) {
         type: 'PUT',
         data: JSON.stringify({
           message: message,
-          content: content,
+          content: btoa(content),
           sha: origContent.sha,
         }),
       }).then(function(result) {
