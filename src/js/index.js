@@ -2,7 +2,7 @@ require("bootstrap/dist/js/bootstrap.js");
 var ContentTools = require('ContentTools/build/content-tools.min.js')
 
 var handleError = function(xhr, status, error) {
-  console.error(status, error);
+  console.error(xhr, status, error);
 };
 
 var updateContent = function(path, message, content, cb) {
@@ -55,7 +55,7 @@ window.addEventListener('load', function() {
     var myPath = window.location.pathname;
     payload.path = 'content' + myPath;
     if (myPath[myPath.length - 1] === '/') { // if last char is a '/'
-      payload.path += 'index;'
+      payload.path += 'index';
     }
     payload.path += '.html';
 
