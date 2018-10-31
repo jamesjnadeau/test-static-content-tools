@@ -40,6 +40,7 @@
     "import/no-dynamic-require": [0]
   },
   "globals": {
+    "window",
     "$": "jquery",
     "jQuery": "jquery",
     "window.jQuery": "jquery",
