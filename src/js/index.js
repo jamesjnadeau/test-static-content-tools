@@ -1,5 +1,5 @@
 require("bootstrap/dist/js/bootstrap.js");
-var loadContentTools = require('./ContentTools');
+var loadContentTools = require('./contentTools');
 
 var currentUser = netlifyIdentity.currentUser();
 
