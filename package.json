@@ -19,6 +19,7 @@
   "dependencies": {
     "@octokit/rest": "^15.15.1",
     "ContentTools": "^1.6.10",
+    "animate.css": "^3.7.0",
     "babel-loader": "^8.0.4",
     "bable-loader": "^0.0.1-security",
     "body-parser": "^1.18.3",
@@ -40,6 +41,7 @@
     "insert-line": "^1.1.0",
     "jade": "^1.11.0",
     "jquery": "^2",
+    "js-cookie": "^2.2.0",
     "less": "^2.7.1",
     "less-loader": "^4.1.0",
     "loader-utils": "^0.2.12",
