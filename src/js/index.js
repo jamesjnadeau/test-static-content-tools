@@ -1,22 +1,42 @@
 require("bootstrap/dist/js/bootstrap.js");
 
-var netlifyIdentity = require("netlify-identity-widget");
+var Cookie = require('js-cookie');
 
-var loadContentTools = require('./contentTools');
-
-netlifyIdentity.init();
-
-var currentUser = netlifyIdentity.currentUser();
-console.log('user', currentUser);
-if (currentUser) {
-  currentUser.jwt().then(function(accessToken) {
-    loadContentTools(accessToken);
+var loadAuth = function() {
+  // code split here
+  require.ensure([
+    'netlify-identity-widget',
+    'ContentTools/build/content-tools.min.js'
+  ], function(require) {
+    require('./auth');
   });
-} else {
-  netlifyIdentity.on('login', function(user) {
-    netlifyIdentity.close();
-    loadContentTools(user.token.access_token);
-  });
+};
 
-  netlifyIdentity.open('login');
+// check if editor cookie set
+if (Cookie.get('load-editor')) {
+  loadAuth();
 }
+
+// check if we hold clicked banner
+var pressTimer;
+var semaphore = false;
+$("a.navbar-brand.brand").mouseup(function() {
+  clearTimeout(pressTimer);
+  return false;
+}).mousedown(function(event) {
+  var element = event.target;
+  pressTimer = window.setTimeout(function() {
+    element.classList.add('infinite', 'animated', 'flash');
+    semaphore = true;
+  }, 4000);
+  return false;
+}).click(function(event) {
+  var element = event.target;
+  console.log('semaphore', semaphore);
+  if (semaphore) {
+    event.preventDefault();
+    element.classList.remove('infinite', 'animated', 'flash');
+    Cookie.set('load-editor', true);
+    loadAuth();
+  }
+});

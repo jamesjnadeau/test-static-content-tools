@@ -48,15 +48,16 @@ var plugins = [
   new webpack.optimize.UglifyJsPlugin({
     sourceMap: true,
   }),
-  new WebpackShellPlugin({
-    // onBuildStart: ['echo "Starting"'],
-    onBuildEnd: ['cp built/404/index.html built/404.html'],
-  })
 ];
 
+
 if (process.env.NODE_ENV === 'production') {
-  /* this makes source maps not work */
-  new PurgecssPlugin({
+  plugins.push(new WebpackShellPlugin({
+    // onBuildStart: ['echo "Starting"'],
+    onBuildEnd: ['cp built/404/index.html built/404.html'],
+  }));
+  /* this makes source maps not work
+  plugins.push(new PurgecssPlugin({
     paths: function() {
       var contentDir = pathUtil.resolve(__dirname, './content');
       var files = glob.sync(contentDir + '/**', { // (md|jade)
@@ -74,7 +75,7 @@ if (process.env.NODE_ENV === 'production') {
 
       return files;
     },
-  });
+  })); */
 }
 
 var styleLoader = ExtractTextPlugin.extract({
