@@ -19,6 +19,7 @@ module.exports = function(accessToken) {
         url: url,
         headers: headers,
         type: 'PUT',
+        contentType: "application/json; charset=utf-8",
         data: JSON.stringify({
           message: message,
           content: btoa(content),

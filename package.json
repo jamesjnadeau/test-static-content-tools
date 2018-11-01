@@ -8,7 +8,7 @@
   "main": "server.js",
   "scripts": {
     "build": "npm run build:webpack",
-    "dev": "npm run dev:webpack",
+    "dev": "node dev-server.js",
     "build:functions": "netlify-lambda build functions -c netlify-webpack.config.js",
     "webpack": "webpack --watch --debug --output-pathinfo",
     "build:webpack": "webpack --colors -p --debug --output-pathinfo",
@@ -21,6 +21,7 @@
     "ContentTools": "^1.6.10",
     "babel-loader": "^8.0.4",
     "bable-loader": "^0.0.1-security",
+    "body-parser": "^1.18.3",
     "bootstrap": "^3.3.6",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4",
@@ -49,6 +50,7 @@
     "purgecss": "^1.0.1",
     "purgecss-webpack-plugin": "^1.2.0",
     "rss": "^1.2.2",
+    "sha1-file": "^1.0.4",
     "slugger": "^1.0.1",
     "smoothstate": "^0.7.2",
     "sqlite3": "^4.0.0",
@@ -62,7 +64,9 @@
     "webpack": "3",
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "3",
-    "webpack-dev-server": "2"
+    "webpack-dev-middleware": "2",
+    "webpack-dev-server": "2",
+    "webpack-hot-middleware": "^2.24.3"
   },
   "engines": {
     "node": "8.x"

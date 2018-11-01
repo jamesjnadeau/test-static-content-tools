@@ -119,6 +119,7 @@ module.exports = {
     libraryTarget: 'umd',
     sourceMapFilename: '[file].map',
     devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]',
+    publicPath: '/',
   },
 
   plugins: plugins,
