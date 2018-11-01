@@ -2,17 +2,17 @@ var pathUtil = require('path');
 var glob = require('glob');
 var webpack = require('webpack');
 // var critical = require('critical');
+var version = require('package')(__dirname).version;
 
-//Plugins
+// Plugins
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var PurgecssPlugin = require('purgecss-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-var staticSiteLoader = require('./static-site-loader');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 // var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const WebpackShellPlugin = require('webpack-shell-plugin');
+var staticSiteLoader = require('./static-site-loader');
 
-var version = require('package')(__dirname).version;
 console.log('Version', version);
 var env = {
   version: version,
@@ -24,15 +24,12 @@ var plugins = [
   /* new BundleAnalyzerPlugin({
     analyzerMode: 'static',
     openAnalyzer: false, // access it at /report.html
-  }),*/
+  }), */
   new ExtractTextPlugin("[name].css", { sourceMap: true }), // allChunks: true,
-  /*
   new CopyWebpackPlugin([
-    //Copy folders in wholesale
-    // { from: 'assets/files', to: 'files' },
-    // { from: 'files/manifest.json', to: 'manifest.json' },
+    // Copy folders in wholesale
+    { from: 'public', to: '' },
   ]),
-  */
   // make jQuery available everywhere
   new webpack.ProvidePlugin({
     $: 'jquery',
@@ -51,23 +48,27 @@ var plugins = [
   new webpack.optimize.UglifyJsPlugin({
     sourceMap: true,
   }),
+  new WebpackShellPlugin({
+    // onBuildStart: ['echo "Starting"'],
+    onBuildEnd: ['cp built/404/index.html built/404.html'],
+  })
 ];
 
 if (process.env.NODE_ENV === 'production') {
   /* this makes source maps not work */
   new PurgecssPlugin({
-    paths: function () {
+    paths: function() {
       var contentDir = pathUtil.resolve(__dirname, './content');
-      var files = glob.sync(contentDir + '/**', { //.(md|jade)
+      var files = glob.sync(contentDir + '/**', { // (md|jade)
         nodir: true,
       });
 
       var templateDir = pathUtil.join(__dirname, 'templates');
-      files = files.concat(glob.sync(templateDir + '/**', { //.(md|jade)
+      files = files.concat(glob.sync(templateDir + '/**', { // .(md|jade)
         nodir: true,
       }));
       var jsDir = pathUtil.join(__dirname, 'assets/js');
-      files = files.concat(glob.sync(jsDir + '/**', { //.(md|jade)
+      files = files.concat(glob.sync(jsDir + '/**', { // .(md|jade)
         nodir: true,
       }));
 
@@ -88,13 +89,14 @@ var styleLoader = ExtractTextPlugin.extract({
 });
 
 module.exports = {
-  //enable source-maps
+  // enable source-maps
   devtool: 'source-map',
 
   module: {
     loaders: [
       { test: /\.html$/, loader: "html-loader" },
-      { test: /\.(css|less)$/,
+      {
+        test: /\.(css|less)$/,
         loader: styleLoader
       },
       { test: /\.(jpe?g|png|gif)$/, loader: 'file-loader' },
