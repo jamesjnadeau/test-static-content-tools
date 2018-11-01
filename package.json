@@ -33,6 +33,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^0.8.5",
     "filewalker": "^0.1.2",
+    "fs-extra": "^7.0.0",
     "glob": "^7.1.2",
     "html-loader": "^0.4.4",
     "html-webpack-plugin": "^1.7.0",
