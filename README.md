@@ -1,5 +1,5 @@
 Static Site Loader with Content Tools Editing
 =================
 
- * [ ] use this for auth: https://github.com/prose/gatekeeper
+ * set cookie 'load-editor' to true to enable editing
 
