@@ -44,7 +44,7 @@
     "js-cookie": "^2.2.0",
     "less": "^2.7.1",
     "less-loader": "^4.1.0",
-    "loader-utils": "^0.2.12",
+    "loader-utils": "^1.4.1",
     "marked": "^0.3.9",
     "netlify-identity-widget": "^1.4.14",
     "netlify-lambda": "^1.0.2",
